@@ -1,0 +1,25 @@
+untuk super admin
+username : admin
+password : adminoky123
+
+hanya super admin yang bisa mengganti user level, seperti karyawan menjadi manager it dan user rolenya
+
+username : oky
+password : oky12345
+userlevel: Administrasi IT Support
+
+username : dwi
+password : dwi12345
+userlevel: karyawan
+
+username : hartanto
+password : hartanto12345
+userlevel: karyawan
+
+username : deny
+password : deny12345
+userlevel: IT Support
+
+username : aris
+password : aris12345
+userlevel: Manager IT

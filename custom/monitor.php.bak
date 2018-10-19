@@ -1,0 +1,107 @@
+<?php 
+$m = date("m");
+$year = date("Y");
+
+// include ('function.php');
+// $query = "SELECT a.*,b.nama as perusahaan,c.nama as karyawan FROM (
+	// SELECT *
+    // FROM  (
+        // select *,count(`status`) as jml_hadir from `9_1_kehadiran` where `status`='hadir' and month(tanggal) = $m and year(tanggal)=$year
+    // ) a
+    // join (
+        // select count(`status`) as jml_mangkir from `9_1_kehadiran` where `status`='mangkir' and month(tanggal) = $m and year(tanggal)=$year
+    // ) b
+    // join (
+        // select count(`status`) as jml_ijin from `9_1_kehadiran` where `status`='ijin' and month(tanggal) = $m and year(tanggal)=$year
+    // ) c
+    // join (
+        // select count(`status`) as jml_sakit from `9_1_kehadiran` where `status`='sakit' and month(tanggal) = $m and year(tanggal)=$year
+    // ) d
+// )a
+// join `4_1_perusahaan` b on `b`.`id` = a.id_perusahaan
+// join `2_1_karyawan` c on `c`.`id` = a.id_karyawan";
+// $result = _query1($query);
+?>
+
+<!-- <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"> -->
+
+<link rel="stylesheet" type="text/css" href="custom/assets/datatables/v1.10.18/css/jquery-ui.css">
+<link rel="stylesheet" type="text/css" href="custom/assets/datatables/v1.10.18/css/datatables.jqueryui.min.css">
+<!-- <link rel="stylesheet" type="text/css" href="assets/datatables/datatables.min.css"> -->
+<!-- <script type="text/javascript" src="assets/datatables/datatables.min.js"></script> -->
+
+<script type="text/javascript" src="custom/assets/datatables/v1.10.18/js/jquery.datatables.min.js"></script>
+<script type="text/javascript" src="custom/assets/datatables/v1.10.18/js/datatables.jqueryui.min.js"></script>
+
+
+<table id="datatables" class="display" style="width:100%">
+    <thead>
+        <tr>
+            <th>Alias</th>
+            <th>Lokasi</th>
+            <th>Uptime</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+    <tbody id="tbodyContent">
+        
+    </tbody>
+</table>
+
+<script>
+$(document).ready(function() {
+	var content = '',a='';
+    $('#datatables').DataTable({
+		"paging":   false,
+        "ordering": false,
+        "info":     false,
+		"searching": false,
+	});
+	setInterval(function(){
+		$.ajax({
+			type:"GET",
+			url:"custom/getcontent.php",
+			success:function(data){
+				try{
+					data = jQuery.parseJSON(data);
+					content = "";
+					$("#tbodyContent").html("");
+					$.each(data,function(i,item){
+						a='';
+						if(item['status']=="DOWN"){
+							a='background:#b95959';
+						}
+						content += "<tr style='"+a+"'>";
+						content += "<td>";
+						content += item['alias'];
+						content += "</td>";
+						content += "<td>";
+						content += item['location'];
+						content += "</td>";
+						content += "<td>";
+						content += item['uptime'];
+						content += "</td>";
+						content += "<td>";
+						content += item['status'];
+						content += "</td>";
+						content += "</tr>";
+					});
+					$("#tbodyContent").append(content);
+				}catch(err){
+					console.log(err);
+					content = "";
+					$("#tbodyContent").html("");
+					content += "<tr>";
+					content += "<td colspan='4' style='text-align:center'>";
+					content += 'Server Down';
+					content += "</td>";
+					content += "</tr>";
+					$("#tbodyContent").append(content);
+					//alert("Tidak dapat terkoneksi dengan server");
+				}
+			}
+		})
+	},1000);
+} );
+
+</script>

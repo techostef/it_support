@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration date="2018/10/19" author="e.World Technology Ltd.">
+  <project id="{2D23B2F1-9107-4245-BBC7-F6E2C1DB634A}" file="C:\xampp\htdocs\it_support\db\it_support.pmp" name="it_support" product="PHPMaker" version="14.0" datetime="2018/10/19 20:52:18" languagefolder="phplang" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0">
+    <table id="ticket_support" name="ticket_support" caption="Tiket Support" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="karyawan" name="karyawan" caption="Karyawan" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="userlevelpermissions" name="userlevelpermissions" caption="userlevelpermissions" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="userlevels" name="userlevels" caption="User Level" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="monitor_php" name="monitor.php" caption="Monitor Server" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+  </project>
+</configuration>

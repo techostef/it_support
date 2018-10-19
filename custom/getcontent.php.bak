@@ -1,0 +1,4 @@
+<?php
+$data = file_get_contents("https://server-status-tsp.firebaseapp.com/status");
+echo json_encode($data);
+?>
